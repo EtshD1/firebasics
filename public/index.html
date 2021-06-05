@@ -11,6 +11,7 @@
   <script src="/__/firebase/init.js"></script>
   <script src="/__/firebase/8.6.5/firebase-auth.js"></script>
   <script src="/__/firebase/8.6.5/firebase-firestore.js"></script>
+  <script src="https://pagecdn.io/lib/faker/3.1.0/locales/uk/faker.uk.min.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,6 +21,9 @@
       Hello, <span id="user-name"></span>
     </div>
     <button id="signOut">Sign Out</button>
+    <ul id="itemList">
+    </ul>
+    <button id="createRandomItem">Create Random Item</button>
   </section>
 
   <section id="signedOut">
