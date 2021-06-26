@@ -86,3 +86,15 @@ button {
 #signedOut {
   justify-content: center;
 }
+
+#signedIn ul#itemList li button:hover {
+  text-decoration: underline;
+}
+
+#signedIn ul#itemList li button {
+  padding: 0;
+  margin-left: 1rem;
+  border: none;
+  background: none;
+  color: #971B22;
+}

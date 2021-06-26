@@ -1,4 +1,7 @@
 (() => {
+  let thingsRef;
+  let unsubscribe;
+
   const auth = firebase.auth();
 
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -19,11 +22,24 @@
     username: document.querySelector("#user-name")
   }
 
-  const addToList = (text) => {
+  const addToList = (text, id) => {
     const newLi = document.createElement("li");
-    newLi.classList.add("showLi");
-    newLi.textContent = text;
+    const textDiv = document.createElement("div");
+    const deleteBtn = document.createElement("button");
 
+    textDiv.textContent = text;
+    deleteBtn.textContent = "Delete";
+
+    newLi.append(textDiv);
+    newLi.append(deleteBtn);
+
+    deleteBtn.addEventListener("click", () => {
+      thingsRef.doc(id).delete().then(() => {
+        console.log("Document successfully deleted!");
+      }).catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+    });
 
     elements.containers.itemList.append(newLi);
   }
@@ -33,9 +49,6 @@
   });
 
   elements.buttons.signOut.addEventListener("click", () => auth.signOut());
-
-  let thingsRef;
-  let unsubscribe;
 
   auth.onAuthStateChanged((user) => {
     if (user) {
@@ -60,7 +73,7 @@
             ele.remove();
           });
           query.docs.map(item => {
-            addToList(item.data().name);
+            addToList(item.data().name, item.id);
           });
         });
 
