@@ -21,7 +21,7 @@
 
   const addToList = (text) => {
     const newLi = document.createElement("li");
-
+    newLi.classList.add("showLi");
     newLi.textContent = text;
 
 
@@ -39,8 +39,8 @@
 
   auth.onAuthStateChanged((user) => {
     if (user) {
-      elements.containers.signedIn.removeAttribute("hidden");
-      elements.containers.signedOut.setAttribute("hidden", true);
+      elements.containers.signedIn.classList.remove("hidden");
+      elements.containers.signedOut.classList.add("hidden");
       elements.username.textContent = user.displayName;
 
       thingsRef = db.collection("things");
@@ -65,10 +65,10 @@
         });
 
     } else {
-      elements.containers.signedOut.removeAttribute("hidden");
-      elements.containers.signedIn.setAttribute("hidden", true);
+      elements.containers.signedOut.classList.remove("hidden");
+      elements.containers.signedIn.classList.add("hidden");
       elements.username.textContent = "";
       unsubscribe ? unsubscribe() : null;
     }
-  })
+  });
 })();

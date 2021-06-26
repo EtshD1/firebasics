@@ -11,22 +11,31 @@
   <script src="/__/firebase/init.js"></script>
   <script src="/__/firebase/8.6.5/firebase-auth.js"></script>
   <script src="/__/firebase/8.6.5/firebase-firestore.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,100&display=swap"
+    rel="stylesheet">
   <script src="https://pagecdn.io/lib/faker/3.1.0/locales/uk/faker.uk.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
-  <section id="signedIn" hidden="true">
-    <div>
-      Hello, <span id="user-name"></span>
+  <section id="signedIn" class="hidden">
+    <div class="userInfo">
+      <div>
+        Hello, <span id="user-name"></span>
+      </div>
+      <button id="signOut">Sign Out</button>
     </div>
-    <button id="signOut">Sign Out</button>
     <ul id="itemList">
     </ul>
     <button id="createRandomItem">Create Random Item</button>
   </section>
 
   <section id="signedOut">
+    <div class="welcome">Welcome to the most exciting App that does absolutely nothing.</div>
+    <div class="enjoy">Please try it out</div>
     <button id="signIn">Sign In</button>
   </section>
 
